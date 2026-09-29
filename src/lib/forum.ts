@@ -31,7 +31,9 @@ export const CATEGORIES = [
 const topics: Topic[] = []
 const replies: Map<string, Reply[]> = new Map()
 
-export async function createTopic(data: Omit<Topic, 'id' | 'createdAt' | 'replies'>) {
+export async function createTopic(
+  data: Omit<Topic, 'id' | 'createdAt' | 'replies'>,
+) {
   const topic: Topic = {
     ...data,
     id: Date.now().toString(),
@@ -43,7 +45,10 @@ export async function createTopic(data: Omit<Topic, 'id' | 'createdAt' | 'replie
   return topic
 }
 
-export async function addReply(topicId: string, data: Omit<Reply, 'id' | 'topicId' | 'createdAt'>) {
+export async function addReply(
+  topicId: string,
+  data: Omit<Reply, 'id' | 'topicId' | 'createdAt'>,
+) {
   const reply: Reply = {
     ...data,
     id: Date.now().toString(),
@@ -63,7 +68,10 @@ export async function addReply(topicId: string, data: Omit<Reply, 'id' | 'topicI
   return reply
 }
 
-export function watchTopics(callback: (topics: Topic[]) => void, onError: () => void) {
+export function watchTopics(
+  callback: (topics: Topic[]) => void,
+  onError: () => void,
+) {
   // Simulate real-time updates
   callback(topics)
   return () => {} // Unsubscribe function
